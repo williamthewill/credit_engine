@@ -1,0 +1,6 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "drawflow.css";
+@import "beautiful.css";
+/* This file is for your main application CSS */

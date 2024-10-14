@@ -1,0 +1,40 @@
+{
+    "begin": {
+        "node": 24,
+        "type": "flow_node",
+        "fn": "apidrivendados",
+        "condition": "Idade",
+        "output": [25]
+    },
+    "25": {
+        "node": 25,
+        "type": "flow_node",
+        "fn": "menorque",
+        "condition": 21,
+        "output": [23, 26]
+    },
+    "23": {
+        "node": 23,
+        "type": "stop_node",
+        "fn": "rejeitar"   
+    },
+    "26": {
+        "node": 23,
+        "type": "stop_node",
+        "fn": "rejeitar",
+        "condition": "Salario",
+        "output": [27]
+    },
+    "27": {
+        "node": 27,
+        "type": "flow_node",
+        "fn": "menorque",
+        "condition": 2000,
+        "output": [28]
+    },
+    "28": {
+        "node": 28,
+        "type": "stop_node",
+        "fn": "rejeitar"   
+    }
+}

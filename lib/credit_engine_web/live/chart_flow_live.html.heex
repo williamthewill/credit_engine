@@ -1,0 +1,108 @@
+<header>
+  <h2><%= @title %></h2>
+  <div class="platform-datarisk-logo">
+    <a href="https://platform.datarisk.io" target="_blank">
+      <svg width="50" height="31" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.3365 10.9592C16.6557 10.6366 17.0944 10.3661 17.5519 10.3661H17.569C18.0214 10.3661 18.4567 10.6232 18.7776 10.9357L24.0455 16.0924L33.7484 6.41247C33.518 6.40406 33.2841 6.41079 33.0434 6.41751C32.0584 6.44607 31.123 6.56201 30.2234 6.82413C27.7823 2.95282 23.4293 0.378662 18.4549 0.378662C10.9098 0.378662 4.77804 6.31165 4.61587 13.6863C1.85386 15.2573 0 18.1927 0 21.5432C0 23.0873 0.467732 24.7273 1.24273 26.2479L16.3382 10.9576L16.3365 10.9592Z"
+          fill="#202020"
+        >
+        </path>
+        <path
+          d="M42.3316 12.7952C42.0636 11.7501 41.3962 10.4832 40.3327 9.35742L39.7045 9.98752L25.3243 24.2932C25.0033 24.6142 24.5663 24.7335 24.1106 24.7335H24.0986C23.6462 24.7335 23.2109 24.6226 22.89 24.31L17.6408 19.2373L6.39136 30.6211H40.8619C45.6809 30.1271 49.1633 26.2037 49.1633 21.5376C49.1633 17.3588 46.2493 13.8437 42.3351 12.7935L42.3316 12.7952Z"
+          fill="#202020"
+        >
+        </path>
+        <path
+          d="M36.8272 2.54846L38.4779 4.11278L35.2311 7.35904L24.0618 18.5277L17.5665 12.22L2.11597 27.8296C2.78342 28.7739 3.5755 29.5939 4.43585 30.1937L17.6143 16.8811L24.096 23.1753L38.4762 8.79734L40.8831 6.39121L42.51 7.93032L44.4901 0.485107L36.8272 2.54846Z"
+          fill="#202020"
+        >
+        </path>
+      </svg>
+    </a>
+  </div>
+</header>
+<div id="wrapper" phx-hook="ChartFlowHook">
+  <div class="col">
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="somar">
+      <i class="fa fa-solid fa-plus"></i><span> Somar</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="maiorque">
+      <i class="fab fa fa-greater-than"></i><span> Maior que</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="menorque">
+      <i class="fab fa fa-less-than"></i><span> Menor que</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="iguala">
+      <i class="fab fa fa-less-than"></i><span> Igual a</span>
+    </div>
+    <div
+      class="drag-drawflow"
+      draggable="true"
+      ondragstart="drag(event)"
+      data-node="multiplicarpor"
+    >
+      <i class="fa-solid fa-xmark"></i><span> Multiplicar por</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="dividirpor">
+      <i class="fa-solid fa-divide"></i><span> Dividir por</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="senao">
+      <i class="fa-solid fa-divide"></i><span> Se não</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="aceitar">
+      <i class="fa-solid fa-check"></i><span> Aceitar</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="rejeitar">
+      <i class="fa-solid fa-square-xmark"></i><span> Rejeitar</span>
+    </div>
+    <div
+      class="drag-drawflow"
+      draggable="true"
+      ondragstart="drag(event)"
+      data-node="apidrivendados"
+    >
+      <i class="fa-solid fa-down-left-and-up-right-to-center"></i><span> API Driven Dados</span>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="menu">
+      <ul>
+        <li onclick="editor.changeModule('Home'); changeModule(event);" class="selected">Home</li>
+        <li onclick="editor.changeModule('Other'); changeModule(event);">Other Module</li>
+      </ul>
+    </div>
+    <div id="drawflow" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="btn-export" onclick="console.log(editor.export())">Export</div>
+      <div class="btn-clear" onclick="editor.clearModuleSelected()">Clear</div>
+      <div class="btn-load-data" onclick="showpopup(event)">
+        Carrgar Dados
+        <div class="modal" style="display:none">
+          <div class="modal-content">
+            <span class="close" onclick="closemodal(event)">&times;</span>
+            <textarea></textarea>
+            <button type="button" onclick="connectAPIDriven(event)">Conectar</button>
+          </div>
+        </div>
+      </div>
+      <div class="btn-publish" phx-click="publish">Publicar</div>
+      <div class="btn-lock">
+        <i id="lock" class="fas fa-lock" onclick="editor.editor_mode='fixed'; changeMode('lock');">
+        </i>
+        <i
+          id="unlock"
+          class="fas fa-lock-open"
+          onclick="editor.editor_mode='edit'; changeMode('unlock');"
+          style="display:none;"
+        >
+        </i>
+      </div>
+      <div class="bar-zoom">
+        <i class="fas fa-search-minus" onclick="editor.zoom_out()"></i>
+        <i class="fas fa-search" onclick="editor.zoom_reset()"></i>
+        <i class="fas fa-search-plus" onclick="editor.zoom_in()"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<p hidden><%= @redraw %></p>

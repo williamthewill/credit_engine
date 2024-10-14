@@ -87,6 +87,8 @@ defmodule CreditEngineWeb do
       import CreditEngineWeb.CoreComponents
       import CreditEngineWeb.Gettext
 
+      import LiveSvelte
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 

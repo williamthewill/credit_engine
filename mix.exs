@@ -52,7 +52,8 @@ defmodule CreditEngine.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:mnesiac, "~> 0.3"},
       {:libcluster, "~> 3.3"},
-      {:tesla, "~> 1.12"}
+      {:tesla, "~> 1.12"},
+      {:live_svelte, "~> 0.14.0"}
     ]
   end
 
@@ -64,13 +65,24 @@ defmodule CreditEngine.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
+      setup: [
+        "deps.get",
+        "ecto.setup",
+        "assets.setup",
+        "assets.build",
+        "npm install --prefix assets"
+      ],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind default", "esbuild default"],
-      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
+      "assets.deploy": [
+        "tailwind default --minify",
+        "esbuild default --minify",
+        "node build.js --deploy --prefix assets",
+        "phx.digest"
+      ]
     ]
   end
 end

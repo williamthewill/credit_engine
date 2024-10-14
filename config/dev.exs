@@ -25,7 +25,8 @@ config :credit_engine, CreditEngineWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "vbopktV115MRLge5lrp2X4YwEnSYSLyYPuJWSgX9f5Kmd8HP1f93oSa4/OId0AJN",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
+    # esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 

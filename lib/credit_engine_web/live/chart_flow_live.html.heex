@@ -22,7 +22,7 @@
     </a>
   </div>
 </header>
-<div id="wrapper" phx-hook="ChartFlowHook">
+<div id="wrapper">
   <div class="col">
     <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="somar">
       <i class="fa fa-solid fa-plus"></i><span> Somar</span>
@@ -106,3 +106,6 @@
   </div>
 </div>
 <p hidden><%= @redraw %></p>
+<div>
+  <.svelte name="ChartFlowLive" live_json_props={%{redraw: @redraw, render: true}} ssr={false} />
+</div>

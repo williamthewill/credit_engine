@@ -182,9 +182,10 @@ defmodule CreditEngineWeb.ChartFlowLive do
   def handle_event("save_data", %{"data_to_save" => data_to_save}, socket) do
     :mnesia.transaction(fn -> :mnesia.write({:chart_data, "1", "1", data_to_save}) end)
 
-    Task.async(fn ->
-      CreditEngine.ChartData.broadcast_extraterrestrial_update("chart_data", data_to_save)
-    end)
+    # Task.async(fn ->
+    IO.inspect("save data")
+    CreditEngine.ChartData.broadcast_extraterrestrial_update("chart_data", data_to_save)
+    # end)
 
     {:reply, %{was_saved: true}, socket}
   end
@@ -246,8 +247,8 @@ defmodule CreditEngineWeb.ChartFlowLive do
   def handle_info(_banana, socket) do
     socket =
       socket
-      |> assign(:title, "Datarisk Credit Engine 2")
       |> assign(:redraw, NaiveDateTime.local_now())
+      |> assign(:title, "Datarisk Credit Engine banana")
 
     {:noreply, socket}
   end

@@ -41,7 +41,7 @@ defmodule CreditEngine.MixProject do
       {:phoenix_live_view, "~> 0.19.0"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.0"},
-      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
+      # {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
       {:finch, "~> 0.13"},
@@ -65,21 +65,14 @@ defmodule CreditEngine.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: [
-        "deps.get",
-        "ecto.setup",
-        "assets.setup",
-        "assets.build",
-        "npm install --prefix assets"
-      ],
+      setup: ["deps.get", "ecto.setup", "npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind default", "esbuild default"],
+      "assets.setup": ["tailwind.install --if-missing"],
+      "assets.build": ["tailwind default"],
       "assets.deploy": [
         "tailwind default --minify",
-        "esbuild default --minify",
         "node build.js --deploy --prefix assets",
         "phx.digest"
       ]

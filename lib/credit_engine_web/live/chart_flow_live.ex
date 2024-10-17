@@ -244,11 +244,20 @@ defmodule CreditEngineWeb.ChartFlowLive do
     {:reply, %{data: data_targets}, socket}
   end
 
-  def handle_info(_banana, socket) do
+  def handle_info(msg, socket) when msg == "chart_data" or msg == "api_driven" do
+    IO.inspect("handle_info update chart_data")
+
     socket =
       socket
       |> assign(:redraw, NaiveDateTime.local_now())
-      |> assign(:title, "Datarisk Credit Engine banana")
+      |> assign(:title, "Datarisk Credit Engine 2")
+
+    {:noreply, socket}
+  end
+
+  def handle_info(msg, socket) do
+    IO.inspect("handle_info nothing")
+    IO.inspect(msg)
 
     {:noreply, socket}
   end

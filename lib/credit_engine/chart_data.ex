@@ -3,11 +3,11 @@ defmodule CreditEngine.ChartData do
     Phoenix.PubSub.subscribe(CreditEngine.PubSub, topic)
   end
 
-  def broadcast_extraterrestrial_update(topic, chart_data) do
+  def broadcast_extraterrestrial_update(topic, _chart_data) do
     Phoenix.PubSub.broadcast(
       CreditEngine.PubSub,
       topic,
-      chart_data
+      topic
     )
   end
 end

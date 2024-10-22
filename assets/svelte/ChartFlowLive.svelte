@@ -83,7 +83,7 @@
 </div>
 
 <script>
-    import { onMount } from "svelte";
+    import { onMount, afterUpdate, onDestroy } from "svelte";
 
     export let live
     export let redraw
@@ -109,6 +109,7 @@
     };
 
     onMount(() => {
+      console.log('onMount')
       var id = document.getElementById("drawflow");
       window.editor = new Drawflow(id);
       editor.reroute = true;
@@ -593,5 +594,23 @@
         }
   
       }
+    });
+
+    afterUpdate(e => {
+      console.log('afterUpdate')
+      live.pushEvent("get_data_to_import", {}, ({ data_to_import }) => {
+        console.log("get_data_to_import")
+        editor.import(data_to_import);
+      });
+
+      live.pushEvent("api_driven", {}, ({ data }) => {
+        console.log("api_driven")
+        console.log(data)
+        window.apiDrivenData = data;
+      });
+    })
+
+    onDestroy(e => {
+      console.log('onDestroy')
     })
 </script>

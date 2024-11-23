@@ -28,7 +28,7 @@
             "data": {
               "option": "Idade"
             },
-            "html": "<div><div class=\"title-box\">API Driven</div><select id=\"proList\" df-option=\"\"><option class=\"item\" value=\"Idade\">Idade</option><option class=\"item\" value=\"Salario\">Salario</option><option class=\"item\" value=\"Score\">Score</option><option class=\"item\" value=\"Relacionamento_banco\">Relacionamento_banco</option></select></div>",
+            "html": "<div><div class=\"title-box\">API Driven</div><select class=\"proList\" df-option=\"\"><option class=\"item\" value=\"Idade\">Idade</option><option class=\"item\" value=\"Salario\">Salario</option><option class=\"item\" value=\"Score\">Score</option><option class=\"item\" value=\"Relacionamento_banco\">Relacionamento_banco</option></select></div>",
             "id": 24,
             "inputs": {
               "input_1": {
@@ -95,7 +95,7 @@
             "data": {
               "option": "Salario"
             },
-            "html": "<div><div class=\"title-box\">API Driven</div><select id=\"proList\" df-option=\"\"><option class=\"item\" value=\"Idade\">Idade</option><option class=\"item\" value=\"Salario\">Salario</option><option class=\"item\" value=\"Score\">Score</option><option class=\"item\" value=\"Relacionamento_banco\">Relacionamento_banco</option></select></div>",
+            "html": "<div><div class=\"title-box\">API Driven</div><select class=\"proList\" df-option=\"\"><option class=\"item\" value=\"Idade\">Idade</option><option class=\"item\" value=\"Salario\">Salario</option><option class=\"item\" value=\"Score\">Score</option><option class=\"item\" value=\"Relacionamento_banco\">Relacionamento_banco</option></select></div>",
             "id": 26,
             "inputs": {
               "input_1": {
@@ -188,7 +188,7 @@
             "data": {
               "option": "Salario"
             },
-            "html": "<div><div class=\"title-box\">API Driven</div><select id=\"proList\" df-option=\"\"><option class=\"item\" value=\"Idade\">Idade</option><option class=\"item\" value=\"Salario\">Salario</option><option class=\"item\" value=\"Score\">Score</option><option class=\"item\" value=\"Relacionamento_banco\">Relacionamento_banco</option></select></div>",
+            "html": "<div><div class=\"title-box\">API Driven</div><select class=\"proList\" df-option=\"\"><option class=\"item\" value=\"Idade\">Idade</option><option class=\"item\" value=\"Salario\">Salario</option><option class=\"item\" value=\"Score\">Score</option><option class=\"item\" value=\"Relacionamento_banco\">Relacionamento_banco</option></select></div>",
             "id": 29,
             "inputs": {
               "input_1": {

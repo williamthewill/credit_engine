@@ -9,6 +9,7 @@ defmodule CreditEngineWeb.ChartFlowLive do
   # }
 
   def mount(_params, _session, socket) do
+    # Test worklow
     CreditEngine.ChartData.subscribe_to_extraterrestrial_updates("chart_data")
     CreditEngine.ChartData.subscribe_to_extraterrestrial_updates("api_driven")
 

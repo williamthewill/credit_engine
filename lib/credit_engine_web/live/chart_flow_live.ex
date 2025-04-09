@@ -9,6 +9,7 @@ defmodule CreditEngineWeb.ChartFlowLive do
   # }
 
   def mount(_params, _session, socket) do
+    # Test worklow
     CreditEngine.ChartData.subscribe_to_extraterrestrial_updates("chart_data")
     CreditEngine.ChartData.subscribe_to_extraterrestrial_updates("api_driven")
 
@@ -182,9 +183,10 @@ defmodule CreditEngineWeb.ChartFlowLive do
   def handle_event("save_data", %{"data_to_save" => data_to_save}, socket) do
     :mnesia.transaction(fn -> :mnesia.write({:chart_data, "1", "1", data_to_save}) end)
 
-    Task.async(fn ->
-      CreditEngine.ChartData.broadcast_extraterrestrial_update("chart_data", data_to_save)
-    end)
+    # Task.async(fn ->
+    IO.inspect("save data")
+    CreditEngine.ChartData.broadcast_extraterrestrial_update("chart_data", data_to_save)
+    # end)
 
     {:reply, %{was_saved: true}, socket}
   end

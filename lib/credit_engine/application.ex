@@ -17,6 +17,7 @@ defmodule CreditEngine.Application do
     hosts = [:bar@localhost, :baz@localhost]
 
     children = [
+      {NodeJS.Supervisor, [path: LiveSvelte.SSR.NodeJS.server_path(), pool_size: 4]},
       # Start the Telemetry supervisor
       CreditEngineWeb.Telemetry,
       # Start the Ecto repository
